@@ -13,14 +13,14 @@ import PlayBoxWorks from "./Components/PlayBoxWorks";
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
       <HeroSection />
       <WeekSection />
       <SubscribeSection />
       <PlayBoxWorks />
       <Footer />
-    </div>
+    </>
   );
 }
 

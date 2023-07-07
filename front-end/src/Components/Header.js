@@ -29,27 +29,35 @@ export function Header() {
     else if (key === "registerPassword") setRegisterPassword(val);
   }, []);
 
-  const onSubmitRegister = useCallback(() => {
-    const payload = {
-      first_name: fname,
-      surname: sname,
-      email: registerEmail,
-      password: registerPassword,
-    };
+  const onSubmitRegister = useCallback(
+    async (e) => {
+      e.preventDefault();
+      const payload = {
+        first_name: fname,
+        surname: sname,
+        email: registerEmail,
+        password: registerPassword,
+      };
 
-    const res = dispatch(signup(payload));
-    if (res) setAuthShow(false);
-  }, [dispatch, fname, registerEmail, registerPassword, sname]);
+      const res = await dispatch(signup(payload));
+      if (res) setAuthShow(false);
+    },
+    [dispatch, fname, registerEmail, registerPassword, sname]
+  );
 
-  const onSubmitLogIn = useCallback(() => {
-    const payload = {
-      email: logInEmail,
-      password: logInPassword,
-    };
+  const onSubmitLogIn = useCallback(
+    async (e) => {
+      e.preventDefault();
+      const payload = {
+        email: logInEmail,
+        password: logInPassword,
+      };
 
-    const res = dispatch(login(payload));
-    if (res) setSignInShow(false);
-  }, [dispatch, logInEmail, logInPassword]);
+      const res = await dispatch(login(payload));
+      if (res) setSignInShow(false);
+    },
+    [dispatch, logInEmail, logInPassword]
+  );
 
   return (
     <>
@@ -101,7 +109,7 @@ export function Header() {
         <Modal.Body id="modelContainer" className="model d-block me-3">
           <div>
             <h2 className="model-heading">Sign in</h2>
-            <form action="!#" className="form">
+            <form className="form" onSubmit={onSubmitLogIn}>
               <div className="form-block">
                 <label htmlFor="email" className="form-lable">
                   Email
@@ -148,13 +156,13 @@ export function Header() {
                     here
                   </a>
                 </p> */}
-                <a href="!" className="play-btn form-play-btn">
+                <button className="play-btn form-play-btn">
                   <img src={playwebflow} alt="" className="play-icon" />
-                </a>
+                </button>
                 {/* <!-- <div className="close-btn-block">
                   <button id="closeBtn" className="sign-in-btn">Sign in</button>
                 </div> --> */}
-                <div className="close-btn-block" onClick={onSubmitLogIn}>
+                <div className="close-btn-block">
                   {/* <!-- <button id="reg-closeBtn" className="sign-in-btn" >Register</button> --> */}
                   <input
                     type="submit"
@@ -174,7 +182,7 @@ export function Header() {
           className="regmodel nav-menu d-block"
         >
           <h2 className="model-heading">Register</h2>
-          <form action="!#" className="form">
+          <form className="form" onSubmit={onSubmitRegister}>
             <div className="form-block">
               <label htmlFor="fname" className="form-lable">
                 First name
@@ -225,7 +233,7 @@ export function Header() {
                 }
               />
             </div>
-            <div className="form-para-block" onClick={onSubmitRegister}>
+            <div className="form-para-block">
               {/* <!-- <p className="form-para">Not Registered? Create account </p><a id="register-link" className="para-link">here</a> */}
               {/* <p className="form-para">Forgot user/password? Click <a href="!#" className="para-link">here</a></p> --> */}
               <button className="play-btn form-play-btn" type="submit">

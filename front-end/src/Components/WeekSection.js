@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import playwebflow from "../Assets/image/play-webflow.svg";
 import video2 from "../Assets/video/video-2.mp4";
 
 export function WeekSection() {
-  const [isWeekVideoPaused, setIsWeekVideoPaused] = useState(true);
+  const vidRef = useRef(null);
+  const [isvidPlaying, setIsVidPlaying] = useState(true);
+
+  const handlePlayVideo = useCallback(() => {
+    if (!isvidPlaying) {
+      vidRef?.current?.play();
+    } else vidRef?.current?.pause();
+    setIsVidPlaying((prevPaused) => !prevPaused);
+  }, [isvidPlaying]);
+
   return (
     <section className="week-section">
       <div className="week-video-block">
@@ -13,7 +22,7 @@ export function WeekSection() {
           autoPlay
           loop
           muted
-          paused={isWeekVideoPaused?.toString()}
+          ref={vidRef}
         >
           <source src={video2} type="video/mp4" />
         </video>
@@ -32,7 +41,7 @@ export function WeekSection() {
         <button
           className="play-btn week-play-btn"
           id="week-video-btn"
-          onClick={() => setIsWeekVideoPaused((prevPaused) => !prevPaused)}
+          onClick={handlePlayVideo}
         >
           <img src={playwebflow} alt="" className="play-icon" />
         </button>

@@ -17,7 +17,7 @@ export const login = (payload) => async (dispatch) => {
       const { data, err } = response.data;
       if (err === 0) {
         setLoginToken(data?.Token);
-        return data;
+        return true;
       }
     } else return false;
   } catch (error) {
@@ -37,7 +37,7 @@ export const signup = (payload) => async (dispatch) => {
       const { data, err } = response.data;
       if (err === 0) {
         setLoginToken(data?.Token);
-        return data;
+        return true;
       }
     } else return false;
   } catch (error) {
