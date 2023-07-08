@@ -79,7 +79,7 @@ export function Header() {
       </header>
       {/* first modal */}
       <Modal show={show} onHide={handleClose}>
-        <Modal.Body className="nav-menu d-block">
+        <Modal.Body className="nav-menu d-block me-3">
           <ul className="nav-list">
             <li className="nav-list-item">
               <a href="!#">Lottery</a>

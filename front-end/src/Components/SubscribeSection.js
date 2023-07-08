@@ -4,40 +4,7 @@ import video2 from "../Assets/video/video-2.mp4";
 import video3 from "../Assets/video/card3.mp4";
 import video4 from "../Assets/video/card4.mp4";
 import video5 from "../Assets/video/card5.mp4";
-// import Slider from "react-slick";
 import { useCallback, useRef, useState } from "react";
-
-// const sliderSettings = {
-//   slidesToShow: 4,
-//   slidesToScroll: 1,
-//   autoplay: true,
-//   autoplaySpeed: 2000,
-//   arrows: false,
-//   responsive: [
-//     {
-//       breakpoint: 1024,
-//       settings: {
-//         slidesToShow: 3,
-//         slidesToScroll: 1,
-//         infinite: true,
-//       },
-//     },
-//     {
-//       breakpoint: 600,
-//       settings: {
-//         slidesToShow: 2,
-//         slidesToScroll: 1,
-//       },
-//     },
-//     {
-//       breakpoint: 480,
-//       settings: {
-//         slidesToShow: 1,
-//         slidesToScroll: 1,
-//       },
-//     },
-//   ],
-// };
 
 export function SubscribeSection() {
   const vidRef = useRef(null);
@@ -102,7 +69,7 @@ export function SubscribeSection() {
         <div className="subscribe-slider-block">
           <h2 className="section-heading">Playbox Subscription</h2>
           <div className="card-slider">
-            <div className="video-card">
+            <div className="video-card mb-3">
               <video
                 id="videoCard1"
                 className="card-video"
@@ -127,7 +94,7 @@ export function SubscribeSection() {
                 </button>
               </div>
             </div>
-            <div className="video-card">
+            <div className="video-card mb-3">
               <video id="videoCard2" className="card-video" autoPlay loop muted>
                 <source src={video2} type="video/mp4" />
               </video>
@@ -145,7 +112,7 @@ export function SubscribeSection() {
                 </button>
               </div>
             </div>
-            <div className="video-card">
+            <div className="video-card mb-3">
               <video
                 id="videoCard3"
                 className="card-video"
@@ -170,7 +137,7 @@ export function SubscribeSection() {
                 </button>
               </div>
             </div>
-            <div className="video-card">
+            <div className="video-card mb-3">
               <video
                 id="videoCard4"
                 className="card-video"
@@ -195,7 +162,7 @@ export function SubscribeSection() {
                 </button>
               </div>
             </div>
-            <div className="video-card">
+            <div className="video-card mb-3">
               <video
                 id="videoCard5"
                 className="card-video"

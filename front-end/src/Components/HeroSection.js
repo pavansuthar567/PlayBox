@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import playwebflow from "../Assets/image/play-webflow.svg";
 import video2 from "../Assets/video/video-2.mp4";
 
@@ -24,6 +24,26 @@ export function HeroSection() {
     },
     [isvid2Playing]
   );
+
+  useEffect(() => {
+    const slideAnimation = setInterval(() => {
+      const activeSlide = document.getElementsByClassName("active");
+      const slideElements = document.getElementsByClassName("slide");
+
+      const activeIndex = Array.from(slideElements).indexOf(activeSlide[0]);
+      if (activeIndex === 1) {
+        slideElements[1]?.classList?.remove("active");
+        slideElements[0]?.classList?.add("active");
+      } else {
+        slideElements[0]?.classList?.remove("active");
+        slideElements[1]?.classList?.add("active");
+      }
+    }, [6000]);
+
+    return () => {
+      clearInterval(slideAnimation);
+    };
+  }, []);
 
   return (
     <>

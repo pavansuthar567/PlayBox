@@ -14,10 +14,12 @@ export const login = (payload) => async (dispatch) => {
     if (payload) {
       dispatch(setLoading(true));
       const response = await axios.post(`${REACT_APP_APIURL}/login`, payload);
-      const { data, err } = response.data;
+      const { data, err, msg } = response.data;
       if (err === 0) {
         setLoginToken(data?.Token);
         return true;
+      } else if (err === 1) {
+        toast.error(msg);
       }
     } else return false;
   } catch (error) {
@@ -34,10 +36,12 @@ export const signup = (payload) => async (dispatch) => {
     if (payload) {
       dispatch(setLoading(true));
       const response = await axios.post(`${REACT_APP_APIURL}/signup`, payload);
-      const { data, err } = response.data;
+      const { data, err, msg } = response.data;
       if (err === 0) {
         setLoginToken(data?.Token);
         return true;
+      } else if (err === 1) {
+        toast.error(msg);
       }
     } else return false;
   } catch (error) {
@@ -53,10 +57,12 @@ export const logout = () => async (dispatch) => {
   try {
     dispatch(setLoading(true));
     const response = await axios.get(`${REACT_APP_APIURL}/logout`);
-    const { err } = response.data;
+    const { err, msg } = response.data;
     if (err === 0) {
       clearToken();
       return true;
+    } else if (err === 1) {
+      toast.error(msg);
     }
   } catch (error) {
     console.log("error", error);
