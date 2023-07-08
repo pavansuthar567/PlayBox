@@ -20,7 +20,10 @@ function App() {
       <SubscribeSection />
       <PlayBoxWorks />
       <Footer />
-      <ToastContainer theme="colored" />
+      <ToastContainer
+        theme="colored"
+        toastStyle={{ fontSize: "16px", lineHeight: "18px" }}
+      />
     </>
   );
 }
